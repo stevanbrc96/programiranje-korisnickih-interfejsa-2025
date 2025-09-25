@@ -1,4 +1,4 @@
-# Programiranje Korisnickih Intefejsa2025
+# Programiranje Korisnickih Intefejsa 2025
 
 Tehnologije:
 
