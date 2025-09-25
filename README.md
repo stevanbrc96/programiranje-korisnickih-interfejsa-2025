@@ -2,7 +2,7 @@
 
 Tehnologije:
 
-Angular 20
-Boostrap 5
-FontsAwesome 7
-Axios HTTP
+- Angular 20
+- Boostrap 5
+- FontsAwesome 7
+- Axios HTTP
