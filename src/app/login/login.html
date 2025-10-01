@@ -1,0 +1,18 @@
+<div class="card login "> 
+    <div class="card-header">
+        <h5>Login</h5>
+    </div>
+    <div class="card-body">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1"  formControlName="email" >
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" >
+  </div>
+  <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-right-to-bracket"></i>Login</button>
+</form>    
+</div>
+</div>

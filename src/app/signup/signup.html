@@ -1,0 +1,40 @@
+<div class="card login">
+  <div class="card-header">
+    <h5>Signup</h5>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" />
+
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" />
+
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" />
+
+        <label for="name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="name" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" />
+
+        <label for="repeat" class="form-label">Repeat Password</label>
+        <input type="password" class="form-control" id="repeat" />
+
+        <label for="repeat" class="form-label">Favourite Destination</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          @for (d of destinations(); track $index) {
+             <option [value]="d">{{d}}</option>
+          }
+        </select>
+      </div>
+      <button type="submit" class="btn btn-secondary">
+        <i class="fa-solid fa-right-to-bracket"></i>Login
+      </button>
+    </form>
+  </div>
+</div>
