@@ -1,5 +1,9 @@
 export interface userModel {
+  firstName: string;
+  lastName: string;
   email: string;
+  phone: string;
   password: string;
-  data:any[];
+  destination: string;
+  data: any[];
 }

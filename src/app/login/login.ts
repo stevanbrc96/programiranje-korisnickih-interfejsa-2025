@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,9 @@ import { FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angula
   styleUrl: './login.css'
 })
 export class Login {
-  protected form: FormGroup 
+  protected form: FormGroup
 
-  constructor (private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, protected router: Router) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -18,9 +20,19 @@ export class Login {
   }
 
   onSubmit() {
-    console.log(this.form.valid)
-    console.log(this.form.value)
-  }
-    
+    if (!this.form.valid) {
+      alert('Invalid form data!')
+      return
+    }
 
+    try {
+      console.log(this.form.value)
+      UserService.login(this.form.value.email, this.form.value.password)
+      this.router.navigate(['/profile'])
+    } catch (e) {
+      console.error(e)
+      alert('Check your login params!')
+    }
+  }
 }
+ 
