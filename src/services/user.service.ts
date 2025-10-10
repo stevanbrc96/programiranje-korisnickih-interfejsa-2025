@@ -1,29 +1,25 @@
+// user.service.ts
 import { userModel } from "../models/user.model"
 
 export class UserService {
-    static findUserByEmail(email: string) {
+    static getUsers(): userModel[] {
         if (!localStorage.getItem('users'))
             localStorage.setItem('users', JSON.stringify([
-
                 {
-
                     firstName: 'Example',
-
                     lastName: 'User',
-
                     email: 'user@example.com',
-
                     phone: '+38163123123',
-
                     password: 'user123',
-
                     destination: 'Zagreb',
-
                     data: []
                 }
             ]))
+        return JSON.parse(localStorage.getItem('users')!)
+    }
 
-        const users: userModel[] = JSON.parse(localStorage.getItem('users')!)
+    static findUserByEmail(email: string) {
+        const users: userModel[] = this.getUsers()
         const exactUser = users.find(u => u.email === email)
 
         if (!exactUser)
@@ -41,6 +37,12 @@ export class UserService {
         localStorage.setItem('active', user.email)
     }
 
+    static signup(payload: userModel) {
+        const users: userModel[] = this.getUsers()
+        users.push(payload)
+        localStorage.setItem('users', JSON.stringify(users))
+    }
+
     static getActiveUser() {
         const active = localStorage.getItem('active')
         if (!active)
@@ -50,6 +52,6 @@ export class UserService {
     }
 
     static logout() {
-   localStorage.removeItem('active')
-}
+        localStorage.removeItem('active')
+    }
 }
